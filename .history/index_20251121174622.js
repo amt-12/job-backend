@@ -16,13 +16,13 @@ app.use(express.json());
 
 const io = socketIo(server, {
   cors: {
-    origin: '*',
+    origin: 'https://job-frontend-mauve.vercel.app/',
     methods: ['GET', 'POST']
   }
 });
 
 app.use(cors({
-  origin: '*', 
+  origin: 'https://job-frontend-mauve.vercel.app/', 
   methods: ['GET', 'POST'],
 }))
 const apiRoutes = require('./api/index');
