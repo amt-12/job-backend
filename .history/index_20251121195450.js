@@ -16,13 +16,13 @@ app.use(express.json());
 
 const io = socketIo(server, {
   cors: {
-    origin: 'https://job-frontend-iota.vercel.app/',
+    origin: '*',
     methods: ['GET', 'POST']
   }
 });
 
 app.use(cors({
-  origin: 'https://job-frontend-iota.vercel.app/', 
+  origin: '*', 
   methods: ['GET', 'POST'],
 }))
 const apiRoutes = require('./api/index');
