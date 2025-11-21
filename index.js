@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const { Queue } = require('bullmq');
@@ -23,7 +25,14 @@ app.use(cors({
   origin: '*', 
   methods: ['GET', 'POST'],
 }))
-mongoose.connect('mongodb+srv://amrit0207232_db_user:2XM0f90h0qT8pvPA@911backend.iqez19j.mongodb.net/', {
+const apiRoutes = require('./api/index');
+app.use('/api', apiRoutes);
+app.use('/api', (req, res, next) => {
+  res.status(404).json({
+    message: "API route not found"
+  });
+});
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://amrit0207232_db_user:2XM0f90h0qT8pvPA@911backend.iqez19j.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
@@ -37,13 +46,7 @@ const redisConnection = new IORedis({
 const jobQueue = new Queue('job-import', { connection: redisConnection });
 console.log('BullMQ Queue initialized', jobQueue.name);
 
-const apiRoutes = require('./api/index');
-app.use('/api', apiRoutes);
-app.use('/api', (req, res, next) => {
-  res.status(404).json({
-    message: "API route not found"
-  });
-});
+
 
 io.on('connection', (socket) => {
   console.log('Client connected:', socket.id);

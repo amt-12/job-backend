@@ -1,0 +1,2 @@
+- [x] Sanitize job data in services/fetchJobs.js: remove keys starting with '$' or '@', sanitize externalId by replacing '$' with '_'
+- [ ] Test the fetch endpoint to ensure no more errors
