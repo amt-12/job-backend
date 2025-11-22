@@ -32,7 +32,7 @@ app.use('/api/working', (req, res, next) => {
     message: "API route not found"
   });
 });
-mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://amrit0207232_db_user:2XM0f90h0qT8pvPA@911backend.iqez19j.mongodb.net/', {
+mongoose.connect('mongodb+srv://amrit0207232_db_user:2XM0f90h0qT8pvPA@911backend.iqez19j.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
@@ -79,7 +79,7 @@ io.on('connection', (socket) => {
 
 require('./cron/fetchCron')(jobQueue);
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
