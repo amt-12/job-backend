@@ -40,9 +40,7 @@ mongoose.connect('mongodb+srv://amrit0207232_db_user:2XM0f90h0qT8pvPA@911backend
 
 const redisConnection = new IORedis({
   host: 'https://eminent-swine-40236.upstash.io',
-  token:"AZ0sAAIncDI1M2Y1NDUxNzBiZTk0ZTMzOWM0N2MwN2ZiNWIzM2YwNnAyNDAyMzY",
   port: 6379,
-
 });
 
 const jobQueue = new Queue('job-import', { connection: redisConnection });

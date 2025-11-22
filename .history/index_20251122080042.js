@@ -39,10 +39,8 @@ mongoose.connect('mongodb+srv://amrit0207232_db_user:2XM0f90h0qT8pvPA@911backend
   .catch(err => console.error('MongoDB connection error:', err));
 
 const redisConnection = new IORedis({
-  host: 'https://eminent-swine-40236.upstash.io',
-  token:"AZ0sAAIncDI1M2Y1NDUxNzBiZTk0ZTMzOWM0N2MwN2ZiNWIzM2YwNnAyNDAyMzY",
+  host: 'localhost',
   port: 6379,
-
 });
 
 const jobQueue = new Queue('job-import', { connection: redisConnection });
