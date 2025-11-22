@@ -42,7 +42,7 @@ const redisConnection = new IORedis({
   port: 6379,
 
 });
-console.log(redisConnection)
+
 const jobQueue = new Queue('job-import', { connection: redisConnection });
 console.log('BullMQ Queue initialized', jobQueue.name);
 

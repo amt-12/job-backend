@@ -33,6 +33,8 @@ app.use('/api/working', (req, res, next) => {
   });
 });
 mongoose.connect('mongodb+srv://mt6100378_db_user:G9*zhVLj.8UsJTJ@cluster0.hx0xvtd.mongodb.net/', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -42,7 +44,7 @@ const redisConnection = new IORedis({
   port: 6379,
 
 });
-console.log(redisConnection)
+
 const jobQueue = new Queue('job-import', { connection: redisConnection });
 console.log('BullMQ Queue initialized', jobQueue.name);
 
